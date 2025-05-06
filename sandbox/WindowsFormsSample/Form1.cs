@@ -22,5 +22,14 @@ namespace WindowsFormsSample
             _button3.Bind(ApplicationCommands.CommandC);
 
         }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            var command = new TestAsyncCommand();
+
+            Console.WriteLine("button1_Click start.");
+            await command.ExecuteAsync();
+            Console.WriteLine("button1_Click finished.");
+        }
     }
 }

@@ -1,44 +1,33 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Primix.Command
 {
-    public class AsyncCommand<T> : IAsyncCommand<T>
+    public class AsyncCommand<T> : AsyncCommandBase<T>
     {
-        private readonly Func<T, Task> _execute;
-        private readonly Func<bool> _canExecute;
-        private bool _isExecuting;
+        private readonly Func<T, CancellationToken, IProgress<double>, Task> _execute;
+        private readonly Func<object, bool> _canExecute;
 
-        public event EventHandler CanExecuteChanged;
+        public AsyncCommand(Func<T, Task> execute, Func<object, bool> canExecute = null) : base(false, false)
+        {
+            _execute = (param, token, report) => execute(param);
+            _canExecute = canExecute;
+        }
 
-        public AsyncCommand(Func<T, Task> execute, Func<bool> canExecute = null)
+        public AsyncCommand(Func<T, CancellationToken, Task> execute, Func<object, bool> canExecute = null) : base(true, false)
+        {
+            _execute = (param, token, report) => execute(param, token);
+            _canExecute = canExecute;
+        }
+
+        public AsyncCommand(Func<T, CancellationToken, IProgress<double>, Task> execute, Func<object, bool> canExecute = null) : base(true, true)
         {
             _execute = execute;
             _canExecute = canExecute;
         }
 
-        public bool CanExecute(T parameter) => !_isExecuting && (_canExecute?.Invoke() ?? true);
-
-        public void Execute(T parameter)
-        {
-            _ = ExecuteAsync(parameter);
-        }
-
-        public async Task ExecuteAsync(T parameter)
-        {
-            _isExecuting = true;
-            RaiseCanExecuteChanged();
-            try
-            {
-                await _execute(parameter);
-            }
-            finally
-            {
-                _isExecuting = false;
-                RaiseCanExecuteChanged();
-            }
-        }
-
-        protected void RaiseCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+        protected override Task InternalExecuteAsync(T parameter, CancellationToken token, IProgress<double> progress) => _execute(parameter, token, progress);
+        protected override bool InternalCanExecute(T parameter = default) => _canExecute?.Invoke(parameter) ?? true;
     }
 }

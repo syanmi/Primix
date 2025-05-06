@@ -22,12 +22,14 @@ namespace Primix.Command
 
         public IAsyncCommand Create(Func<object, Task> execute, Func<bool> canExecute = null)
         {
-            return new AsyncCommand(execute, canExecute);
+            //return new AsyncCommand(execute, canExecute);
+            return default;
         }
 
         public IAsyncCommand<T> Create<T>(Func<T, Task> execute, Func<bool> canExecute = null)
         {
-            return new AsyncCommand<T>(execute, canExecute);
+            //return new AsyncCommand<T>(execute, canExecute);
+            return default;
         }
 
         public IAsyncCommand<T, TResult> Create<T, TResult>(Func<T, Task<TResult>> execute, Func<bool> canExecute = null)

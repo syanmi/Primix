@@ -1,44 +1,21 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Primix.Command
 {
-    public class AsyncCommand : IAsyncCommand
+    public sealed class AsyncCommand : AsyncCommand<object>, IAsyncCommand
     {
-        private readonly Func<object, Task> _execute;
-        private readonly Func<bool> _canExecute;
-        private bool _isExecuting;
-
-        public event EventHandler CanExecuteChanged;
-
-        public AsyncCommand(Func<object, Task> execute, Func<bool> canExecute = null)
+        public AsyncCommand(Func<object, Task> execute) : base(execute)
         {
-            _execute = execute;
-            _canExecute = canExecute;
         }
 
-        public bool CanExecute(object parameter) => !_isExecuting && (_canExecute?.Invoke() ?? true);
-
-        public void Execute(object parameter)
+        public AsyncCommand(Func<object, CancellationToken, Task> execute) : base(execute)
         {
-            _ =  ExecuteAsync(parameter);
         }
 
-        public async Task ExecuteAsync(object parameter)
+        public AsyncCommand(Func<object, CancellationToken, IProgress<double>, Task> execute) : base(execute)
         {
-            _isExecuting = true;
-            RaiseCanExecuteChanged();
-            try
-            {
-                await _execute(parameter);
-            }
-            finally
-            {
-                _isExecuting = false;
-                RaiseCanExecuteChanged();
-            }
         }
-
-        protected void RaiseCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
     }
 }

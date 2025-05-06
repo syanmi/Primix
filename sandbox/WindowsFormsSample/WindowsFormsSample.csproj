@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Command\ApplicationCommands.cs" />
     <Compile Include="Command\CommandBinder.cs" />
+    <Compile Include="Command\TestAsyncCommand.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

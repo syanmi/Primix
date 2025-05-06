@@ -32,6 +32,7 @@ namespace WindowsFormsSample
             this._button1 = new System.Windows.Forms.Button();
             this._button2 = new System.Windows.Forms.Button();
             this._button3 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // _button1
@@ -61,11 +62,22 @@ namespace WindowsFormsSample
             this._button3.Text = "button2";
             this._button3.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(93, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "button2";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this._button3);
             this.Controls.Add(this._button2);
             this.Controls.Add(this._button1);
@@ -80,6 +92,7 @@ namespace WindowsFormsSample
         private System.Windows.Forms.Button _button1;
         private System.Windows.Forms.Button _button2;
         private System.Windows.Forms.Button _button3;
+        private System.Windows.Forms.Button button1;
     }
 }
 
