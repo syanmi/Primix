@@ -83,6 +83,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Primix.WinForms\Primix.WinForms.csproj">
+      <Project>{10e5c723-031f-4ccd-8cde-393f2c31d829}</Project>
+      <Name>Primix.WinForms</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\Primix\Primix.csproj">
       <Project>{ddafb505-b94d-43cd-9f8b-b6991fdd8780}</Project>
       <Name>Primix</Name>

@@ -1,5 +1,6 @@
 ﻿using Primix.Command;
 using Primix.Logging;
+using Primix.Message;
 using Primix.Service;
 using Primix.View;
 
@@ -12,6 +13,12 @@ namespace Primix
             collection.AddPrimixCommand();
             collection.AddPrimixLogging();
             collection.AddPrimixView();
+
+            collection.AddSingleton(typeof(IMessageBroker<>), typeof(MessageBroker<>));
+            collection.AddSingleton(typeof(IMessagePublisher<>), typeof(MessagePublisher<>));
+            collection.AddSingleton(typeof(IMessageSubscriber<>), typeof(MessageSubscriber<>));
+
+
         }
 
         public static void AddPrimixCommand(this IServiceCollection collection)

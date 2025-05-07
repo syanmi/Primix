@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sandbox", "sandbox", "{7972
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsSample", "sandbox\WindowsFormsSample\WindowsFormsSample.csproj", "{5E0278E5-1C62-4A70-8CC6-8EA84E79CA47}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Primix.WinForms", "src\Primix.WinForms\Primix.WinForms.csproj", "{10E5C723-031F-4CCD-8CDE-393F2C31D829}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{5E0278E5-1C62-4A70-8CC6-8EA84E79CA47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E0278E5-1C62-4A70-8CC6-8EA84E79CA47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E0278E5-1C62-4A70-8CC6-8EA84E79CA47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10E5C723-031F-4CCD-8CDE-393F2C31D829}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10E5C723-031F-4CCD-8CDE-393F2C31D829}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10E5C723-031F-4CCD-8CDE-393F2C31D829}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10E5C723-031F-4CCD-8CDE-393F2C31D829}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +47,7 @@ Global
 		{DDAFB505-B94D-43CD-9F8B-B6991FDD8780} = {0D2B2BAC-F6F7-4C5A-8F7A-C4476CA61FA0}
 		{482CDAFC-B6A5-4EAC-A91A-D682FA7E8364} = {C8FBEE85-5283-4B99-98BE-F2C4D6A1A1E2}
 		{5E0278E5-1C62-4A70-8CC6-8EA84E79CA47} = {79724736-0647-4105-8795-77F8434147E5}
+		{10E5C723-031F-4CCD-8CDE-393F2C31D829} = {0D2B2BAC-F6F7-4C5A-8F7A-C4476CA61FA0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AD8E299F-793C-4839-9D15-74919038F76B}
