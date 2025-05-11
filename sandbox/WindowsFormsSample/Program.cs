@@ -9,9 +9,25 @@ using System.Windows.Input;
 using Primix;
 using Primix.Service;
 using Primix.Message;
+using Primix.Data;
+using Primix.Config;
 
 namespace WindowsFormsSample
 {
+
+    public class SettingA
+    {
+        public string Name { get; set; } = "SettingA";
+        public int Value { get; set; } = 100;
+    }
+
+    public class SettingB
+    {
+        public string Name { get; set; } = "SettingB";
+        public int Value { get; set; } = 200;
+    }
+
+
     static class Program
     {
         /// <summary>
@@ -21,19 +37,41 @@ namespace WindowsFormsSample
         static void Main()
         {
 
+
+            var configfile = XDocumentDataSource.Load(@"C:\Users\Satoshi\Desktop\App\t\sandbox\WindowsFormsSample\bin\Debug\test.txt");
+              
             var services = new SimpleServiceCollection();
             services.AddPrimix();
+            services.Configure<SettingA>(configfile);
+            services.Configure<SettingB>(configfile);
 
             var provider = services.BuildServiceProvider();
 
-            var publisher = provider.GetService<IMessagePublisher<MessageClass>>();
-            var subscriber = provider.GetService<IMessageSubscriber<MessageClass>>();
 
-            subscriber.Subscribe((message) => Console.WriteLine(message.Message));
+            var paramA = provider.GetService<IConfig<SettingA>>();
+            Console.WriteLine($"SettingA.Name = {paramA.Value.Name}");
+            Console.WriteLine($"SettingA.Value = {paramA.Value.Value}");
+            paramA.Value.Value++;
+            paramA.Save();
 
-            publisher.Publish(new MessageClass("hello1"));
-            publisher.Publish(new MessageClass("hello2"));
-            publisher.Publish(new MessageClass("hello3"));
+            var paramB = provider.GetService<IConfig<SettingB>>();
+            Console.WriteLine($"SettingB.Name = {paramB.Value.Name}");
+            Console.WriteLine($"SettingB.Value = {paramB.Value.Value}");
+            paramB.Value.Value--;
+            paramB.Save();
+
+            //var data = provider.GetService<ISharedData<MessageClass>>();
+            //var dispose = data.Subscribe((updated) => Console.WriteLine("onnext" + updated.Message));
+
+            //var message = data.Value.Message;
+            //Console.WriteLine("message");
+
+            //var editor = data.GetEditor();
+            //editor.Value.Message = "updated message";
+            //editor.Commit();
+
+            //Console.WriteLine($"message {data.Value.Message}");
+
 
 
             Application.EnableVisualStyles();
@@ -45,9 +83,14 @@ namespace WindowsFormsSample
         internal class MessageClass
         {
             public string Message { get; set; }
-            public MessageClass(string message)
+
+            public MessageClass()
             {
-                Message = message;
+            }
+
+            public MessageClass(string data)
+            {
+                Message = "init message";
             }
         }
 

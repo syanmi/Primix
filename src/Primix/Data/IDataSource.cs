@@ -1,9 +1,10 @@
 ﻿
 namespace Primix.Data
 {
-    public interface IDataSource : IReadOnlyDataSource
+    public interface IDataSource
     {
-        void SetSection<T>(T section) where T : new();
-        void Save();
+        T GetData<T>() where T : class, new();
+
+        void SetData<T>(T data) where T : class, new();
     }
 }

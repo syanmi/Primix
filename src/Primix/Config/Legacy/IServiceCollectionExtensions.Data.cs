@@ -1,7 +1,7 @@
 ﻿using Primix.Service;
 using System;
 
-namespace Primix.Data
+namespace Primix.Config.Legacy
 {
     public static class IServiceCollectionExtensionsData
     {

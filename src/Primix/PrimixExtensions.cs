@@ -1,4 +1,6 @@
 ﻿using Primix.Command;
+using Primix.Config;
+using Primix.Data;
 using Primix.Logging;
 using Primix.Message;
 using Primix.Service;
@@ -18,6 +20,11 @@ namespace Primix
             collection.AddSingleton(typeof(IMessagePublisher<>), typeof(MessagePublisher<>));
             collection.AddSingleton(typeof(IMessageSubscriber<>), typeof(MessageSubscriber<>));
 
+            collection.AddSingleton(typeof(ISharedData<>), typeof(SharedData<>));
+            collection.AddSingleton(typeof(IReadOnlySharedData<>), typeof(ReadOnlySharedData<>));
+            collection.AddSingleton(typeof(ISharedDataSource), typeof(SharedDataSource));
+            collection.AddSingleton(typeof(IReadOnlySharedDataSource), typeof(ReadOnlySharedDataSource));
+            collection.AddSingleton(typeof(IReadOnlyConfig<>), typeof(IConfig<>));
 
         }
 

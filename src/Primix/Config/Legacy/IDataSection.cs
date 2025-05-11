@@ -1,5 +1,5 @@
 ﻿
-namespace Primix.Data
+namespace Primix.Config.Legacy
 {
     public interface IDataSection<T>
     {

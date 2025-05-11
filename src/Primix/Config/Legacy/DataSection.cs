@@ -1,5 +1,5 @@
 ﻿
-namespace Primix.Data
+namespace Primix.Config.Legacy
 {
     public class DataSection<TSource, TSection> : IDataSection<TSection> where TSource : IDataSource where TSection : new()
     {

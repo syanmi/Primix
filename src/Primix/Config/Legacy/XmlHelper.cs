@@ -2,7 +2,7 @@
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Primix.Data
+namespace Primix.Config.Legacy
 {
     public static class XmlHelper
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Primix.Data
+namespace Primix.Config.Legacy
 {
     public class AppSettings : XmlDocumentDataSource
     {

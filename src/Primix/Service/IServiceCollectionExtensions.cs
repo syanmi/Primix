@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Primix.Config;
+using Primix.Data;
+using System;
 
 namespace Primix.Service
 {
@@ -25,5 +27,18 @@ namespace Primix.Service
             => collection.Add(typeof(T1), typeof(T2), ServiceLifeTime.Transient);
         public static void AddTransient<T>(this IServiceCollection collection, Func<IServiceProvider, T> factory) where T : class
             => collection.Add(factory, ServiceLifeTime.Transient);
+
+        public static void Configure<T>(this IServiceCollection collection, IDataSource source) where T : class, new()
+        {
+            collection.AddSingleton<IConfig<T>>(_ => new Config<T>(source));
+        }
+        public static void ReadOnly<T>(this IServiceCollection collection, IDataSource source) where T : class, new()
+        {
+            collection.AddSingleton<IReadOnlyConfig<T>>(_ => new Config<T>(source));
+        }
+        public static void ReadOnly<T>(this IServiceCollection collection, T data) where T : class, new()
+        {
+            collection.AddSingleton<IReadOnlyConfig<T>>(_ => new ReadOnlyConfig<T>(data));
+        }
     }
 }

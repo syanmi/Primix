@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Xml;
 
-namespace Primix.Data
+namespace Primix.Config.Legacy
 {
     public class XmlDocumentDataSource : IDataSource
     {

@@ -23,7 +23,16 @@ namespace Primix.Service
             Type implementType;
             Func<IServiceProvider, object> factory;
             ServiceLifeTime lifeTime;
-            if (type.IsGenericType)
+
+            var descriptor1 = _descriptor.FirstOrDefault(x => x.ServiceType == type);
+            if(descriptor1 != null)
+            {
+                serviceType = descriptor1.ServiceType;
+                implementType = descriptor1.ImplementationType;
+                factory = descriptor1.Factory;
+                lifeTime = descriptor1.LifeTime;
+            }
+            else if (type.IsGenericType)
             {
                 // GenericTypeDefinition(ジェネリック型定義)は一致する
                 var genType = type.GetGenericTypeDefinition();

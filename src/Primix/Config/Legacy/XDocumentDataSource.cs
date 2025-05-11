@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using Primix.Config.Legacy;
+using System.IO;
 using System.Xml.Linq;
 
 namespace Primix.Data
@@ -77,6 +78,16 @@ namespace Primix.Data
         public static XDocumentDataSource Load(string path)
         {
             return new XDocumentDataSource(path);
+        }
+
+        public T GetData<T>() where T : class, new()
+        {
+            return GetSection<T>();
+        }
+
+        public void SetData<T>(T data) where T : class, new()
+        {
+            SetSection<T>(data);
         }
     }
 }
