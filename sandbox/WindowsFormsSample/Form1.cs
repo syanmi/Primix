@@ -34,7 +34,17 @@ namespace WindowsFormsSample
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using(var dialog = new TestDialog())
+            using(var dialog = new TestDialog(async (token) =>
+            {
+                int counter = 0;
+                while (true)
+                {
+                    token.ThrowIfCancellationRequested();
+                    await Task.Delay(100, token);
+                    Console.WriteLine($"{counter}");
+                    counter++;
+                }
+            }))
             {
                 dialog.ShowDialog();
             }
