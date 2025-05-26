@@ -24,13 +24,6 @@ namespace WindowsFormsSample
         public Form1()
         {
             InitializeComponent();
-
-            //_button1.Bind(ApplicationCommands.CommandA);
-            //_button2.Bind(ApplicationCommands.CommandB);
-            //_button3.Bind(ApplicationCommands.CommandC);
-
-      
-
         }
 
         private void button1_Click2(object sender, EventArgs e)
@@ -39,13 +32,12 @@ namespace WindowsFormsSample
             Console.WriteLine("button1_Click finished.");
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            var command = new TestAsyncCommand();
-
-            Console.WriteLine("button1_Click start.");
-            await command.ExecuteAsync();
-            Console.WriteLine("button1_Click finished.");
+            using(var dialog = new TestDialog())
+            {
+                dialog.ShowDialog();
+            }
         }
     }
 }
