@@ -56,7 +56,7 @@ namespace WindowsFormsSample
         {
             var service = AppServices.Require<IMessageDialogService>();
 
-            service.ShowMessage("hello world/.");
+            service.ShowMessage("hello world.");
         }
     }
 }
