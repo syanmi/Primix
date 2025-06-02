@@ -1,5 +1,6 @@
 ﻿using Primix.Disposable;
 using Primix.View;
+using Primix.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,8 +56,17 @@ namespace WindowsFormsSample
         private void _button1_Click(object sender, EventArgs e)
         {
             var service = AppServices.Require<IMessageDialogService>();
-
             service.ShowMessage("hello world.");
+
+
+
+            var fileDialogService = AppServices.Require<IFileDialogService>();
+            var openResult = fileDialogService.ShowOpenFileDialog(this.ToWindow());
+            var saveResult = fileDialogService.ShowSaveFileDialog(this.ToWindow());
+            Console.WriteLine($"openfile : {openResult.IsAccepted} {openResult.FilePath}");
+            Console.WriteLine($"savefile : {saveResult.IsAccepted} {saveResult.FilePath}");
+
+
         }
     }
 }

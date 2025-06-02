@@ -14,10 +14,11 @@ namespace Primix.WinForms.Service.View
 
         public string Name => _form.Text;
 
+        public Form Form => _form;
+
         public IWindow Parent => throw new NotImplementedException();
 
         public IWindow[] Children => throw new NotImplementedException();
-
 
         public WindowsForm(Form form)
         {

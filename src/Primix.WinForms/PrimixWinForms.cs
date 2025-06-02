@@ -10,6 +10,7 @@ namespace Primix
         {
             services.AddSingleton<IWindow, WindowsForm>();
             services.AddSingleton<IMessageDialogService, MessageDialogService>();
+            services.AddSingleton<IFileDialogService, FileDialogService>();
         }
 
     }
