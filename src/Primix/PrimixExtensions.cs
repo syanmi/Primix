@@ -42,7 +42,7 @@ namespace Primix
         public static void AddPrimixView(this IServiceCollection collection)
         {
             collection.AddSingleton<IWindowService, DefaultWindowService>();
-            collection.AddSingleton<IDialogService, DefaultDialogService>();
+            collection.AddSingleton<IMessageDialogService, DefaultDialogService>();
         }
     }
 }
