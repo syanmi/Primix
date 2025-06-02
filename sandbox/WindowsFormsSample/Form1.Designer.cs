@@ -43,6 +43,7 @@ namespace WindowsFormsSample
             this._button1.TabIndex = 0;
             this._button1.Text = "button1";
             this._button1.UseVisualStyleBackColor = true;
+            this._button1.Click += new System.EventHandler(this._button1_Click);
             // 
             // _button2
             // 

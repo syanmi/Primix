@@ -1,4 +1,5 @@
 ﻿using Primix.Disposable;
+using Primix.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsSample.App;
 using WindowsFormsSample.Command;
 
 namespace WindowsFormsSample
@@ -48,6 +50,13 @@ namespace WindowsFormsSample
             {
                 dialog.ShowDialog();
             }
+        }
+
+        private void _button1_Click(object sender, EventArgs e)
+        {
+            var service = AppServices.Require<IMessageDialogService>();
+
+            service.ShowMessage("hello world/.");
         }
     }
 }

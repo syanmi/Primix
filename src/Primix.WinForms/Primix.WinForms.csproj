@@ -42,8 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="PrimixWinForms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\View\WindowsForm.cs" />
     <Compile Include="Service\View\MessageDialogService.cs" />
   </ItemGroup>
   <ItemGroup>

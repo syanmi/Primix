@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\AppServices.cs" />
     <Compile Include="Command\ApplicationCommands.cs" />
     <Compile Include="Command\CommandBinder.cs" />
     <Compile Include="Command\TestAsyncCommand.cs" />

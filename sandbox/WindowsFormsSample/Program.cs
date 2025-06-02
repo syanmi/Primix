@@ -1,5 +1,4 @@
 ﻿using Primix.Command;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -11,6 +10,8 @@ using Primix.Service;
 using Primix.Message;
 using Primix.Data;
 using Primix.Config;
+using WindowsFormsSample.App;
+using System;
 
 namespace WindowsFormsSample
 {
@@ -36,6 +37,14 @@ namespace WindowsFormsSample
         [STAThread]
         static void Main()
         {
+
+            var services = new SimpleServiceCollection();
+
+            services.AddPrimix();
+            services.AddPrimixWinForms();
+
+            AppServices.Load(services);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
