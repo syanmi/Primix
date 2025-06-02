@@ -12,6 +12,7 @@ namespace Primix
             services.AddSingleton<IClipboardService, ClipBoardService>();
             services.AddSingleton<IFileDialogService, FileDialogService>();
             services.AddSingleton<IMessageDialogService, MessageDialogService>();
+            services.AddSingleton<IWindowManager, WindowManager>();
         }
 
     }

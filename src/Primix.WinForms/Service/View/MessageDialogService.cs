@@ -8,7 +8,7 @@ namespace Primix.WinForms.Service.View
         public WindowResult Show(IWindow owner, string message, string caption, MessageDialogButton button, MessageDialogIcon icon)
         {
             var result = MessageBox.Show(message, caption, ToMessageBoxButtons(button), ToMessageBoxIcon(icon));
-            return ToWindowResult(result);
+            return WinFormsUtil.ToWindowResult(result);
         }
 
         private MessageBoxButtons ToMessageBoxButtons(MessageDialogButton button)
@@ -33,22 +33,6 @@ namespace Primix.WinForms.Service.View
                 case MessageDialogIcon.Error:return MessageBoxIcon.Error;
                 case MessageDialogIcon.Question:return MessageBoxIcon.Question;
                 default:return MessageBoxIcon.None;
-            }
-        }
-
-        private WindowResult ToWindowResult(DialogResult result)
-        {
-            switch (result)
-            {
-                case DialogResult.None: return WindowResult.None;
-                case DialogResult.OK:return WindowResult.OK;
-                case DialogResult.Cancel:return WindowResult.Cancel;
-                case DialogResult.Abort:return WindowResult.Abort;
-                case DialogResult.Retry:return WindowResult.Retry;
-                case DialogResult.Ignore:return WindowResult.Ignore;
-                case DialogResult.Yes:return WindowResult.Yes;
-                case DialogResult.No:return WindowResult.No;
-                default:return WindowResult.No;
             }
         }
     }

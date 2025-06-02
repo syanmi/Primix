@@ -9,6 +9,13 @@ namespace Primix.View
 
         public IWindow[] Children => new IWindow[0];
 
+        public bool IsVisible => throw new System.NotImplementedException();
+
+        public void Activate()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void Close()
         {
         }
@@ -19,6 +26,16 @@ namespace Primix.View
 
         public void Minimize()
         {
+        }
+
+        public void Show()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public WindowResult ShowDialog()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

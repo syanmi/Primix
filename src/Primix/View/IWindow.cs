@@ -6,8 +6,12 @@ namespace Primix.View
         string Name { get; }
         IWindow Parent { get; }
         IWindow[] Children { get; }
+        bool IsVisible { get; }
+        void Activate();
         void Minimize();
         void Maximize();
+        void Show();
+        WindowResult ShowDialog();
         void Close();
     }
 }

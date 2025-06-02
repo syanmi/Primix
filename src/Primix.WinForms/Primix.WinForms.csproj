@@ -47,8 +47,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\View\ClipBoardService.cs" />
     <Compile Include="Service\View\FileDialogService.cs" />
+    <Compile Include="Service\View\WindowManager.cs" />
     <Compile Include="Service\View\WindowsForm.cs" />
     <Compile Include="Service\View\MessageDialogService.cs" />
+    <Compile Include="Service\View\WinFormsUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Primix\Primix.csproj">
