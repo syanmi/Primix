@@ -9,8 +9,9 @@ namespace Primix
         public static void AddPrimixWinForms(this IServiceCollection services)
         {
             services.AddSingleton<IWindow, WindowsForm>();
-            services.AddSingleton<IMessageDialogService, MessageDialogService>();
+            services.AddSingleton<IClipboardService, ClipBoardService>();
             services.AddSingleton<IFileDialogService, FileDialogService>();
+            services.AddSingleton<IMessageDialogService, MessageDialogService>();
         }
 
     }

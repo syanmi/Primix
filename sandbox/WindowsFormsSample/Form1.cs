@@ -58,14 +58,15 @@ namespace WindowsFormsSample
             var service = AppServices.Require<IMessageDialogService>();
             service.ShowMessage("hello world.");
 
-
-
             var fileDialogService = AppServices.Require<IFileDialogService>();
             var openResult = fileDialogService.ShowOpenFileDialog(this.ToWindow());
             var saveResult = fileDialogService.ShowSaveFileDialog(this.ToWindow());
             Console.WriteLine($"openfile : {openResult.IsAccepted} {openResult.FilePath}");
             Console.WriteLine($"savefile : {saveResult.IsAccepted} {saveResult.FilePath}");
 
+            var clipboardService = AppServices.Require<IClipboardService>();
+            Console.WriteLine($"clipboard : {clipboardService.ContainsText()} {clipboardService.GetText()}");
+            
 
         }
     }
